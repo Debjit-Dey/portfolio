@@ -1,0 +1,21 @@
+.a{
+    background-color: green;
+    width: 200px;
+
+    height: 300px;
+    position: relative;
+    top: 200px;
+    left: 100px;
+
+}
+
+
+.b{
+    width: 100px;
+    height: 100px;
+    background-image: url("./amazon.jpg");
+    position: absolute;
+    right: 0;
+    top: 30%;
+
+}
