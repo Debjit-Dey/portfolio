@@ -228,11 +228,11 @@
                         </div>
                     </div>
                     <div class="contact-right">
-                        <form name="submit-to-google-sheet">
+                        <form method="post" id="form">
                             <input type="text" name="Name" placeholder="Enter Your Name" required>
                             <input type="email" name="Email" placeholder="Enter Your email" required>
                             <textarea name="Message" rows="6" placeholder="Enter Your Message"></textarea>
-                            <button type="submit" class="btn">submit</button>
+                            <button type="submit" class="btn" id="btn">submit</button>
                         </form>
                     </div>
                 </div>
@@ -310,16 +310,30 @@
             typeSpeed: 70,
         });
     </script>
-      <script>
-        const scriptURL = 'https://script.google.com/macros/library/d/1zw3n_cZJ087V0SvTZ6j5fEmwYqE_ervjIxHaV24QyX9-BeFZDZLtIjXx/1'
-        const form = document.forms['submit-to-google-sheet']
-      
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => console.log('Success!', response))
-            .catch(error => console.error('Error!', error.message))
-        })
+      <!-- ----------------------------------------------------------------java script contact form----------------------------------------- -->
+    <script>
+      let url= 'https://script.google.com/macros/s/AKfycbzvZVRDJQBstRjVE_IDJ1vS77EULpAgl1OJZR-fI4FFrX_-xVW5y5vZvPBz0P9GKye9/exec';
+      let form=document.querySelector('#form');
+      const msg = document.getElementById('msg');
+      form.addEventListener("submit",(e)=>{
+        e.target.btn.innerHTML="Submitting....";
+      let d=new FormData(form);
+      fetch(url,{
+        method:"POST",
+        body:d
+      }).then((res)=>res.text())
+      .then((finalRes)=>{
+        e.target.btn.innerHTML="Submit"
+        msg.innerHTML = "Message sent successfully!";
+        setTimeout(function(){
+            msg.innerHTML = ""
+        },3000)
+        form.reset()
+
+        // })
+      })  
+      e.preventDefault();  
+    })  
       </script>
 </body>
 
