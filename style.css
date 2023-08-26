@@ -500,6 +500,12 @@ form input, form textarea{
     margin-bottom: 20px;
     cursor: pointer;
 }
+#msg{
+    font-size: 2rem;
+    color: red;
+    display: block;
+    margin-top: -10px;
+}
 
 /* ----------------------------------------------------Copyright---------------------------------------- */
 
